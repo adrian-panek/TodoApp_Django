@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="form-group">
+    <p>Add a new task to our task list!</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

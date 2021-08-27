@@ -7,13 +7,14 @@
         <button type="submit">Submit</button>
     </form>
     
-    <h1>This is the home page of our todo app.</h1>
+    <h1 class="display-1 text-center text-primary">This is the home page of our todo app.</h1>
     {% for task in tasks %}
-        <p>{{ task.description }}</p>
-        <p>{{ task.is_done }}</p>
-        <p>{{ task.date_created }}</p>
-        <a href="{% url 'main_todo:update-task' task.pk %}">Update task</a>
-        <a href="{% url 'main_todo:delete-task' task.pk %}">Delete task</a>
+    <ul class="list-group">
+        <div class="row">
+        <div class="col-9">{{ task.description }}</div>
+        <a class="btn btn-primary btn-info" href="{% url 'main_todo:update-task' task.pk %}">Update task</a>
+        <a class="btn btn btn-danger" href="{% url 'main_todo:delete-task' task.pk %}">Delete task</a>
+    </div>
     {% endfor %}
-
+</ul>
 {% endblock %}
