@@ -1,6 +1,6 @@
 body {
-  background-color: #FAFAFA;
-  font-family: 'Nunito', sans-serif;
+  background-color: #fafafa;
+  font-family: "Nunito", sans-serif;
   padding-top: 50px;
 }
 
@@ -10,12 +10,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 a,
 p {
-  color: #4b5156
+  color: #4b5156;
 }
 
 a {
@@ -76,20 +76,6 @@ input {
   margin-left: 10px;
 }
 
-.task-complete-icon {
-  height: 20px;
-  width: 20px;
-  background-color: rgb(105, 192, 105);
-  border-radius: 50%;
-}
-
-.task-incomplete-icon {
-  height: 20px;
-  width: 20px;
-  background-color: rgb(218, 218, 218);
-  border-radius: 50%;
-}
-
 .delete-link {
   text-decoration: none;
   font-weight: 900;
@@ -99,7 +85,6 @@ input {
   padding: 10px 20px;
 }
 
-
 #search-add-wrapper {
   display: flex;
   justify-content: space-between;
@@ -107,39 +92,28 @@ input {
   padding: 20px;
 }
 
-@media screen and (max-width:320px) {
+@media screen and (max-width: 320px) {
   #search-add-wrapper {
-      padding: 10px;
+    padding: 10px;
   }
 }
 
-input[type=text],
-input[type=password],
+input[type="text"],
+input[type="password"],
 textarea {
   border: 1px solid #757575;
   border-radius: 5px;
   padding: 10px;
   width: 95%;
-  
 }
-
-label {
-  padding-top: 10px !important;
-  display: block;
-}
-
 
 .button {
   border: 1px solid #757575;
-  background-color: #FFF;
-  color: #EB796F;
+  background-color: #fff;
+  color: #eb796f;
   padding: 10px;
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
-}
-
-.card-body {
-  padding: 20px;
 }

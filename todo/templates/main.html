@@ -1,37 +1,64 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="header-bar">
-<header>Todo App</header>
+  <header>Todo App</header>
 
-    <form class="form" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit"><i class="fas fa-plus"></i></button>
-    </form>
+  <form class="form" method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit"><i class="fas fa-plus"></i></button>
+  </form>
 </div>
 
-    <div class="task-items-wrapper">
-        {% for task in tasks %}
-        <div class="task-wrapper" data-position="{{task.pk}}">
-            <div class="task-title">
-                {% if task.is_done %}
-                <div class="task-complete-icon"></div>
-                <a href="{% url 'main_todo:update-task' task.id %}">{{ task.description }}</a> {% else %}
-                <div class="task-incomplete-icon"></div>
-                <a href="{% url 'main_todo:update-task' task.id %}">{{ task.description }}</a> {% endif %}
-            </div>
-            <div class="task-controls">
-                <a class="delete-link" href="{% url 'main_todo:delete-task' task.id %}">&#215;</a>
-            </div>
-        </div>
+<div id="search-add-wrapper">
+  <form method="GET" style="display: flex">
+    <input
+      type="text"
+      name="search-area"
+      placeholder="Search your task"
+      value="{{search_input}}"
+    />
+    <input class="button" type="submit" value="Search" />
+  </form>
+  {% if tasks|length == 0 %}
+  <a id="add-link" href="{% url 'main_todo:add-task' %}">&#x2b;</a>
+  {% endif %}
+</div>
 
-        {% empty %}
-    <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
-        <h3>There are currently no tasks.</h3>
-        <h3>Create a <a style="text-decoration: none; color: #8f97e3;" href="{% url 'main_todo:add-task' %}">new task</a>! </h3>
+<div class="task-items-wrapper">
+  {% for task in tasks %}
+  <div class="task-wrapper" data-position="{{task.pk}}">
+    <div class="task-title">
+      {% if task.is_done %}
+      <div class="task-complete-icon"></div>
+      <a href="{% url 'main_todo:update-task' task.id %}"
+        >{{ task.description }}</a
+      >
+      {% else %}
+      <div class="task-incomplete-icon"></div>
+      <a href="{% url 'main_todo:update-task' task.id %}"
+        >{{ task.description }}</a
+      >
+      {% endif %}
     </div>
-    {% endfor %}
+    <div class="task-controls">
+      <a class="delete-link" href="{% url 'main_todo:delete-task' task.id %}"
+        >&#215;</a
+      >
+    </div>
+  </div>
+
+  {% empty %}
+  <div style="text-align: center; padding-bottom: 10px; line-height: 1em">
+    <h3>There are currently no tasks.</h3>
+    <h3>
+      Create a
+      <a
+        style="text-decoration: none; color: #8f97e3"
+        href="{% url 'main_todo:add-task' %}"
+        >new task</a
+      >!
+    </h3>
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}
