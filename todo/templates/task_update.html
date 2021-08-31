@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <p>You are trying to update task: <strong>{{ task.description }}</p></strong>
+    <p style="text-align: center;">You are trying to update task: <strong style="color: red;">{{ task.description }}</p></strong>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-    <button type="submit">Submit</button>
+        <button type="submit"><i class="fas fa-plus"></i></button>
+        <a href="{% url 'main_todo:homepage' %}">Go back to task list</a>
     </form>
     
 {% endblock %}
